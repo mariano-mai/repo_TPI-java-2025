@@ -16,14 +16,12 @@ public class IngresoPorTeclado {
 				System.out.println("Entrada inválida. Ingrese un número entero.");
 			}
 		}
-		entrada.close();
 		return valor;
 	}
 	
 	public static String ingresarTexto() {
 		entrada = new Scanner(System.in);
 		String texto = entrada.nextLine();
-		entrada.close();
 		return texto;
 	}
 
