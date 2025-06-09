@@ -1,7 +1,6 @@
 package com.informatorio.appligachad;
 
-import com.informatorio.appligachad.service.menu.MenuService;
-import com.informatorio.appligachad.service.menu.impl.MenuServiceImpl;
+import com.informatorio.appligachad.ejecucion.EjecucionDelPrograma;
 
 /**
  * Hello world!
@@ -9,7 +8,7 @@ import com.informatorio.appligachad.service.menu.impl.MenuServiceImpl;
 public class App {
     public static void main(String[] args) {
         System.out.println("¡BIENVENIDO A LA LIGA GIGACHAD!");
-        MenuService menu = new MenuServiceImpl();
-        menu.mostrarMenu();
+        
+        EjecucionDelPrograma.ejecutarPrograma();
     }
 }
