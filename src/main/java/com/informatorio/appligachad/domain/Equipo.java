@@ -7,6 +7,11 @@ public class Equipo {
 	private String nombre;
 	private List<Jugador> jugadores;
 	
+	public Equipo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Equipo(String nombre) {
 		super();
 		this.nombre = nombre;
