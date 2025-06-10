@@ -1,9 +1,13 @@
-package com.informatorio.appligachad.service.menu.impl;
+package com.informatorio.appligachad.service.menu.impl.registro;
 
 import com.informatorio.appligachad.input.IngresoPorTeclado;
+import com.informatorio.appligachad.service.equipo.EquipoService;
+import com.informatorio.appligachad.service.liga.impl.LigaServiceImpl;
 import com.informatorio.appligachad.service.menu.MenuService;
 
 public class MenuServiceRegistrarImpl implements MenuService{
+	
+	private EquipoService equipoService;
 
 	@Override
 	public void mostrarMenu() {
@@ -21,7 +25,8 @@ public class MenuServiceRegistrarImpl implements MenuService{
 		
 		switch(condicion) {
 		case 1:
-			System.out.println("se está ejecutando la opción de registrar equipo.\n");
+			System.out.println("Registro de Equipo sin Jugadores.\n\nIngrese nombre del Equipo:");
+			LigaServiceImpl.nuevaLiga.getEquipos().add(equipoService.crearEquipo(IngresoPorTeclado.ingresarTexto()));
 			break;
 		case 2:
 			System.out.println("se está ejecutando la opción de registrar jugador.\n");

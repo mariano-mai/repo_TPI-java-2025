@@ -5,6 +5,7 @@ import java.util.List;
 public class Liga {
 	
 	private List<Partido> partidos;
+	private List<Equipo> equipos;
 
 	public Liga() {
 		super();
@@ -13,6 +14,10 @@ public class Liga {
 
 	public List<Partido> getPartidos() {
 		return partidos;
+	}
+	
+	public List<Equipo> getEquipos() {
+		return equipos;
 	}
 
 	public void setPartidos(List<Partido> partidos) {
