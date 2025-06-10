@@ -4,12 +4,10 @@ import com.informatorio.appligachad.domain.Liga;
 import com.informatorio.appligachad.service.liga.LigaService;
 
 public class LigaServiceImpl implements LigaService{
-	
-	public static Liga nuevaLiga;
 
 	@Override
 	public Liga crearLiga() {
-		nuevaLiga = new Liga();
+		Liga nuevaLiga = new Liga();
 		return nuevaLiga;
 	}
 

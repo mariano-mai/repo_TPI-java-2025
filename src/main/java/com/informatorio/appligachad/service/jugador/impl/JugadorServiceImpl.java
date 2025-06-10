@@ -1,5 +1,8 @@
 package com.informatorio.appligachad.service.jugador.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.informatorio.appligachad.domain.Jugador;
 import com.informatorio.appligachad.service.jugador.JugadorService;
 
