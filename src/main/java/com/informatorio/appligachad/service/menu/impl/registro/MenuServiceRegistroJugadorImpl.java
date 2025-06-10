@@ -1,9 +1,13 @@
 package com.informatorio.appligachad.service.menu.impl.registro;
 
 import com.informatorio.appligachad.input.IngresoPorTeclado;
+import com.informatorio.appligachad.service.jugador.JugadorService;
+import com.informatorio.appligachad.service.jugador.impl.JugadorServiceImpl;
 import com.informatorio.appligachad.service.menu.MenuService;
 
 public class MenuServiceRegistroJugadorImpl implements MenuService{
+	
+	private JugadorService jugadorService = new JugadorServiceImpl();
 
 	@Override
 	public void mostrarMenu() {
@@ -21,8 +25,7 @@ public class MenuServiceRegistroJugadorImpl implements MenuService{
 		
 		switch(condicion) {
 		case 1:
-			System.out.println("Ingrese ");
-			
+			jugadorService.crearJugadorV2();
 			break;
 		case 2:
 			System.out.println("se está ejecutando la opción de registrar jugador.\n");

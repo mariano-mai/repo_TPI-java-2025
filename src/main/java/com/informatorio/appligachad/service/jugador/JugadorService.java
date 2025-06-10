@@ -7,5 +7,7 @@ public interface JugadorService {
 	Jugador crearJugador();
 	
 	Jugador crearJugador(String nombre, String apellido, int edad, boolean esTitular);
+	
+	Jugador crearJugadorV2();
 
 }
