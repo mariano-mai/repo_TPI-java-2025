@@ -25,11 +25,12 @@ public class MenuServiceRegistrarImpl implements MenuService{
 		
 		switch(condicion) {
 		case 1:
-			System.out.println("Registro de Equipo sin Jugadores.\n\nIngrese nombre del Equipo:");
+			System.out.println("\nRegistro de Equipo sin Jugadores.\n\nIngrese nombre del Equipo:");
 			EquipoDB.equiposDB.add(equipoService.crearEquipo(IngresoPorTeclado.ingresarTexto()));
 			break;
 		case 2:
-			System.out.println("se está ejecutando la opción de registrar jugador.\n");
+			System.out.println("\nRegistro de Jugadores\n");
+			MenuServiceRegistroJugadorImpl.registroJugador.mostrarMenu();
 			break;
 		case 3:
 			System.out.println("se está ejecutando la opción de registrar partido.\n");

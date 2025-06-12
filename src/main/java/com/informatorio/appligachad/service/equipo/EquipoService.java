@@ -10,5 +10,7 @@ public interface EquipoService {
 	Equipo crearEquipo(String nombre);
 	
 	Equipo crearEquipo(String nombre, List<Jugador> jugadores);
+	
+	void asignarJugadorAEquipo(Equipo equipo, Jugador jugador);
 
 }

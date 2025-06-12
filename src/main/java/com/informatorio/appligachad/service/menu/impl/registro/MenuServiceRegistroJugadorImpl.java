@@ -1,11 +1,14 @@
 package com.informatorio.appligachad.service.menu.impl.registro;
 
+import com.informatorio.appligachad.database.domaindb.JugadorDB;
 import com.informatorio.appligachad.input.IngresoPorTeclado;
 import com.informatorio.appligachad.service.jugador.JugadorService;
 import com.informatorio.appligachad.service.jugador.impl.JugadorServiceImpl;
 import com.informatorio.appligachad.service.menu.MenuService;
 
 public class MenuServiceRegistroJugadorImpl implements MenuService{
+	
+	public static MenuServiceRegistroJugadorImpl registroJugador;
 	
 	private JugadorService jugadorService = new JugadorServiceImpl();
 
@@ -25,7 +28,7 @@ public class MenuServiceRegistroJugadorImpl implements MenuService{
 		
 		switch(condicion) {
 		case 1:
-			jugadorService.crearJugadorV2();
+			JugadorDB.jugadorDB.add(jugadorService.crearJugadorV2());
 			break;
 		case 2:
 			System.out.println("se está ejecutando la opción de registrar jugador.\n");

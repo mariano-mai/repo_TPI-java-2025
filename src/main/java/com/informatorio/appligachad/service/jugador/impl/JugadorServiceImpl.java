@@ -1,6 +1,5 @@
 package com.informatorio.appligachad.service.jugador.impl;
 
-import com.informatorio.appligachad.database.domaindb.JugadorDB;
 import com.informatorio.appligachad.domain.Jugador;
 import com.informatorio.appligachad.input.IngresoPorTeclado;
 import com.informatorio.appligachad.service.jugador.JugadorService;
@@ -31,7 +30,6 @@ public class JugadorServiceImpl implements JugadorService{
 		int opcion = IngresoPorTeclado.ingresarEnteroPositivo();
 		boolean esTitular = opcion==1?true:false;
 		Jugador nuevoJugador = new Jugador(nombre, apellido, edad, esTitular);
-		JugadorDB.jugadorDB.add(nuevoJugador);
 		return nuevoJugador;
 	}
 	

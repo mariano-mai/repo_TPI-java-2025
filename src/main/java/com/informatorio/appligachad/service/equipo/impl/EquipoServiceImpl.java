@@ -20,4 +20,24 @@ public class EquipoServiceImpl implements EquipoService{
 		return null;
 	}
 
+	@Override
+	public void asignarJugadorAEquipo(Equipo equipo, Jugador jugador) {
+		int contador = 0;
+		for(Jugador jugador1 : equipo.getJugadores()) {
+			if(jugador1.isEsTitular()) {
+				contador++;
+			}
+		}
+		if(!jugador.isEsTitular()) {
+			equipo.getJugadores().add(jugador);
+		}else {
+			if(contador<11) {
+				equipo.getJugadores().add(jugador);
+			}else {
+				System.out.println("Se llegó al límite de titulares.");
+			}
+		}
+		
+	}
+
 }
