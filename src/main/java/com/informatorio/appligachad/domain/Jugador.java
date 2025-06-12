@@ -11,6 +11,7 @@ public class Jugador {
 	private int minutosJugados;
 	private List<Partido> partidosIngresadosDesdeBanco;
 	private boolean esTitular;
+	private Equipo equipo;
 	
 	public Jugador() {
 		super();
@@ -51,6 +52,10 @@ public class Jugador {
 
 	public int getEdad() {
 		return edad;
+	}
+	
+	public Equipo getEquipo() {
+		return equipo;
 	}
 
 	public void setCantidadDeGoles(int cantidadDeGoles) {

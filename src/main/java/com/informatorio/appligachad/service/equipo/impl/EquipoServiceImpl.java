@@ -40,4 +40,12 @@ public class EquipoServiceImpl implements EquipoService{
 		
 	}
 
+	@Override
+	public void transferirJugador(Jugador jugador, Equipo nuevoEquipo) {
+		Jugador nuevoJugador = jugador;
+		int ubicacion = jugador.getEquipo().getJugadores().indexOf(jugador);
+		jugador.getEquipo().getJugadores().remove(ubicacion);
+		nuevoEquipo.getJugadores().add(nuevoJugador);
+	}
+
 }
