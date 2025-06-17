@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.informatorio.appligachad.database.domaindb.JugadorDB;
+import com.informatorio.appligachad.domain.Equipo;
 import com.informatorio.appligachad.domain.Jugador;
 import com.informatorio.appligachad.input.IngresoPorTeclado;
 import com.informatorio.appligachad.service.jugador.JugadorService;
@@ -124,6 +125,7 @@ public class JugadorServiceImpl implements JugadorService{
 		
 	private void hiceTodoElTrabajo(Map<String, Jugador> jugadores) {
 		Jugador goleador = new Jugador("Genericus Golesmany",0,true);
+		goleador.setEquipo(new Equipo("Goles Saint-Generico"));
 		for(Map.Entry<String, Jugador> jugador1 : jugadores.entrySet()) {
 			if(jugador1.getValue().getCantidadDeGoles()<goleador.getCantidadDeGoles()) {
 				goleador = jugador1.getValue();

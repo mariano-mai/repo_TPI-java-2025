@@ -60,6 +60,10 @@ public class Jugador {
 
 	public void setPartidosIngresadosDesdeBanco(int partidosIngresados) {
 		this.partidosIngresados = partidosIngresados;
-	}	
+	}
+	
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
 
 }

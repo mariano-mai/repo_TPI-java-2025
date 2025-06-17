@@ -5,6 +5,7 @@ import com.informatorio.appligachad.service.equipo.EquipoService;
 import com.informatorio.appligachad.service.equipo.impl.EquipoServiceImpl;
 import com.informatorio.appligachad.service.menu.MenuService;
 import com.informatorio.appligachad.service.menu.impl.mostrarinfo.jugadoresinfo.MenuJugadoresInfoImpl;
+import com.informatorio.appligachad.service.menu.impl.mostrarinfo.reportesinfo.MenuReportesInfoImpl;
 
 public class MenuServiceMostrarInfoImpl implements MenuService{
 	
@@ -35,7 +36,8 @@ public class MenuServiceMostrarInfoImpl implements MenuService{
 			equipoService.mostrarTodos();
 			break;
 		case 3:
-			System.out.println("reportes.");
+			System.out.println("Aquí puede ver los reportes.");
+			MenuReportesInfoImpl.menuReportes.mostrarMenu();
 			break;
 		default:
 			
