@@ -6,6 +6,7 @@ public class Equipo {
 	
 	private String nombre;
 	private List<Jugador> jugadores;
+	private int cantidadDeGoles;
 	
 	public Equipo() {
 		super();
@@ -33,6 +34,20 @@ public class Equipo {
 
 	public void setJugadores(List<Jugador> jugadores) {
 		this.jugadores = jugadores;
-	}	
+	}
+
+	public int getCantidadDeGoles() {
+		return cantidadDeGoles;
+	}
+
+	public void setCantidadDeGoles() {
+		int total = 0;
+		for(Jugador jugador : this.jugadores) {
+			total+=jugador.getCantidadDeGoles();
+		}
+		this.cantidadDeGoles = total;
+	}
+	
+	
 
 }

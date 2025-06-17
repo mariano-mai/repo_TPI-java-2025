@@ -14,5 +14,7 @@ public interface EquipoService {
 	void asignarJugadorAEquipo(Equipo equipo, Jugador jugador);
 	
 	void transferirJugador(Jugador jugador, Equipo nuevoEquipo);
+	
+	void mostrarTodos();
 
 }
