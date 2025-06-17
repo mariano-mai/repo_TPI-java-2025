@@ -5,5 +5,7 @@ import com.informatorio.appligachad.domain.Partido;
 public interface PartidoService {
 	
 	Partido crearPartido();
+	
+	void mostrarPartidos();
 
 }

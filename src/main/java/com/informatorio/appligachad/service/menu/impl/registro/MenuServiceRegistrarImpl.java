@@ -42,6 +42,7 @@ public class MenuServiceRegistrarImpl implements MenuService{
 			break;
 		case 3:
 			System.out.println("se está ejecutando la opción de registrar partido.\n");
+			partidoService.mostrarPartidos();
 			Partido newPartido = partidoService.crearPartido();
 			PartidoDB.partidoMapDB.put(newPartido.getId(), newPartido);
 			break;
