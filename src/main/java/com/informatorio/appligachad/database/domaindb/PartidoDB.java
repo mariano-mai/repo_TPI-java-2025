@@ -1,12 +1,13 @@
 package com.informatorio.appligachad.database.domaindb;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 import com.informatorio.appligachad.domain.Partido;
 
 public class PartidoDB {
 	
-	public static List<Partido> partidoDB = new ArrayList<>();
+	public static Map<UUID, Partido> partidoMapDB = new HashMap<>();
 
 }

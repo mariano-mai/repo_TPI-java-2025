@@ -1,12 +1,12 @@
 package com.informatorio.appligachad.database.domaindb;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.informatorio.appligachad.domain.Jugador;
 
 public class JugadorDB {
 	
-	public static List<Jugador> jugadorDB = new ArrayList<>();
+	public static Map<String, Jugador> jugadoresMapDB = new HashMap<>();
 
 }
