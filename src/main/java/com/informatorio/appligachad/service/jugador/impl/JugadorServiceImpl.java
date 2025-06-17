@@ -1,6 +1,8 @@
 package com.informatorio.appligachad.service.jugador.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -62,7 +64,56 @@ public class JugadorServiceImpl implements JugadorService{
 		for(Map.Entry<String, Jugador> jugador1 : jugadores.entrySet()) {
 			listaAlfa.add(jugador1.getValue());
 		}
+		Collections.sort(listaAlfa, Comparator.comparing(jugador->jugador.getNombre()));
 		return listaAlfa;
+	}
+
+	@Override
+	public void mostrarTitulares() {
+		System.out.println("\nLista de todos los jugadores de la liga GigaChad:");
+		System.out.printf("%-40s%-30s%-30s%-30s%n", "NOMBRE","EDAD","MINUTOS JUGADOS","CANTIDAD DE GOLES");
+		for(Jugador jugador : listaDeTitularesOSuplentes(JugadorDB.jugadoresMapDB, true)) {
+			System.out.printf("%-40s%-30d%-30d%-30d%n",
+					jugador.getNombre(),
+					jugador.getEdad(),
+					jugador.getMinutosJugados(),
+					jugador.getCantidadDeGoles());
+		}
+		
+	}
+	
+	@Override
+	public void mostrarSuplentes() {
+		System.out.println("\nLista de todos los jugadores de la liga GigaChad:");
+		System.out.printf("%-40s%-30s%-30s%-30s%n", "NOMBRE","EDAD","CANTIDAD DE PARTIDOS INGRESADOS","CANTIDAD DE GOLES");
+		for(Jugador jugador : listaDeTitularesOSuplentes(JugadorDB.jugadoresMapDB, false)) {
+			System.out.printf("%-40s%-30d%-30d%-30d%n",
+					jugador.getNombre(),
+					jugador.getEdad(),
+					jugador.getPartidosIngresados(),
+					jugador.getCantidadDeGoles());
+		}
+		
+	}
+	
+	private List<Jugador> listaDeTitularesOSuplentes(Map<String, Jugador> jugadores, boolean condicion){
+		List<Jugador> listaBeta = new ArrayList<>();
+		List<Jugador> listaRetorno = new ArrayList<>();
+		for(Map.Entry<String, Jugador> jugador1 : jugadores.entrySet()) {
+			listaBeta.add(jugador1.getValue());
+		}
+		if(condicion) {
+			listaBeta.stream()
+				.filter(jugador->jugador.isEsTitular()==true)
+				.forEach(jugador->listaRetorno.add(jugador));
+			Collections.sort(listaBeta, Comparator.comparingInt(jugador->jugador.getMinutosJugados()));
+		}else {
+			listaBeta.stream()
+			.filter(jugador->jugador.isEsTitular()==false)
+			.forEach(jugador->listaRetorno.add(jugador));
+			Collections.sort(listaBeta, Comparator.comparingInt(jugador->jugador.getPartidosIngresados()));
+		}
+		return listaRetorno;
 	}
 	
 	

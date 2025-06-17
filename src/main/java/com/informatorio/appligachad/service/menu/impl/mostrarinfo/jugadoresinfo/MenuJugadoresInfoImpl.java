@@ -16,7 +16,7 @@ public class MenuJugadoresInfoImpl implements MenuService{
 		int condicion;
 		do {
 			System.out.println("seleccione una opción:");
-			System.out.println("1- Ver todos los jugadores.\n2- Ver jugadores titulares.\n3- Ver jugadores suplentes.\n4- Goleador de la liga.\5- Volver");
+			System.out.println("1- Ver todos los jugadores.\n2- Ver jugadores titulares.\n3- Ver jugadores suplentes.\n4- Goleador de la liga.\n5- Volver");
 			condicion=IngresoPorTeclado.ingresarEnteroPositivo();
 			ejecutarOpciones(condicion);
 		}while(condicion!=5);
@@ -31,9 +31,11 @@ public class MenuJugadoresInfoImpl implements MenuService{
 			break;
 		case 2:
 			System.out.println("Lista de los titulares ordenados por minutos jugados.");
+			jugadorService.mostrarTitulares();
 			break;
 		case 3:
 			System.out.println("Lista de suplentes ordenados por cantidad de partidos jugados.");
+			jugadorService.mostrarSuplentes();
 			break;
 		case 4:
 			System.out.println("cartel con información del goleador de la liga.");

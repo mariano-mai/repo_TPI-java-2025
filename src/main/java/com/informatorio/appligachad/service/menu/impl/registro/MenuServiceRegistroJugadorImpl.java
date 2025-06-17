@@ -9,7 +9,9 @@ import com.informatorio.appligachad.service.jugador.JugadorService;
 import com.informatorio.appligachad.service.jugador.impl.JugadorServiceImpl;
 import com.informatorio.appligachad.service.menu.MenuService;
 import com.informatorio.appligachad.utils.busqueda.equipo.BuscarEquipoInt;
+import com.informatorio.appligachad.utils.busqueda.equipo.impl.BuscarEquipoIntImpl;
 import com.informatorio.appligachad.utils.busqueda.jugador.BuscarJugadorInt;
+import com.informatorio.appligachad.utils.busqueda.jugador.impl.BuscarJugadorIntImpl;
 
 public class MenuServiceRegistroJugadorImpl implements MenuService{
 	
@@ -17,8 +19,8 @@ public class MenuServiceRegistroJugadorImpl implements MenuService{
 	
 	private JugadorService jugadorService = new JugadorServiceImpl();
 	private EquipoService equipoService = new EquipoServiceImpl();
-	private BuscarEquipoInt buscarEquipo;
-	private BuscarJugadorInt buscarJugador;
+	private BuscarEquipoInt buscarEquipo = new BuscarEquipoIntImpl();
+	private BuscarJugadorInt buscarJugador = new BuscarJugadorIntImpl();
 
 	@Override
 	public void mostrarMenu() {

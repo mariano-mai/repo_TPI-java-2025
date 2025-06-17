@@ -4,6 +4,8 @@ import com.informatorio.appligachad.input.IngresoPorTeclado;
 import com.informatorio.appligachad.service.menu.MenuService;
 
 public class MenuReportesInfoImpl implements MenuService{
+	
+	public static MenuService menuReportes = new MenuReportesInfoImpl();
 
 	@Override
 	public void mostrarMenu() {

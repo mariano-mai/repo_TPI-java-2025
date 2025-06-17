@@ -11,5 +11,9 @@ public interface JugadorService {
 	Jugador crearJugadorV2();
 	
 	void mostrarTodos();
+	
+	void mostrarTitulares();
+	
+	void mostrarSuplentes();
 
 }
