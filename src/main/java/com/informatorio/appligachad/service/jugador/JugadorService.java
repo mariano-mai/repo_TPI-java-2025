@@ -9,5 +9,7 @@ public interface JugadorService {
 	Jugador crearJugador(String nombre, String apellido, int edad, boolean esTitular);
 	
 	Jugador crearJugadorV2();
+	
+	void mostrarTodos();
 
 }

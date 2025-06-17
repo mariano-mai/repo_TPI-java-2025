@@ -1,9 +1,15 @@
 package com.informatorio.appligachad.service.menu.impl.mostrarinfo.jugadoresinfo;
 
 import com.informatorio.appligachad.input.IngresoPorTeclado;
+import com.informatorio.appligachad.service.jugador.JugadorService;
+import com.informatorio.appligachad.service.jugador.impl.JugadorServiceImpl;
 import com.informatorio.appligachad.service.menu.MenuService;
 
 public class MenuJugadoresInfoImpl implements MenuService{
+	
+	public static MenuService menuJugadores = new MenuJugadoresInfoImpl();
+	
+	private JugadorService jugadorService = new JugadorServiceImpl();
 
 	@Override
 	public void mostrarMenu() {
@@ -21,6 +27,7 @@ public class MenuJugadoresInfoImpl implements MenuService{
 		switch(condicion) {
 		case 1:
 			System.out.println("Lista de todos los jugadores ordenados alfabéticamente. Acá se genera el .csv");
+			jugadorService.mostrarTodos();
 			break;
 		case 2:
 			System.out.println("Lista de los titulares ordenados por minutos jugados.");

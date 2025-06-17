@@ -13,7 +13,7 @@ import com.informatorio.appligachad.utils.busqueda.jugador.BuscarJugadorInt;
 
 public class MenuServiceRegistroJugadorImpl implements MenuService{
 	
-	public static MenuServiceRegistroJugadorImpl registroJugador;
+	public static MenuService registroJugador = new MenuServiceRegistroJugadorImpl();
 	
 	private JugadorService jugadorService = new JugadorServiceImpl();
 	private EquipoService equipoService = new EquipoServiceImpl();

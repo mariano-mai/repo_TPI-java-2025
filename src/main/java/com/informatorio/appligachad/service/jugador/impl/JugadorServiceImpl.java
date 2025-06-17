@@ -1,5 +1,10 @@
 package com.informatorio.appligachad.service.jugador.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import com.informatorio.appligachad.database.domaindb.JugadorDB;
 import com.informatorio.appligachad.domain.Jugador;
 import com.informatorio.appligachad.input.IngresoPorTeclado;
 import com.informatorio.appligachad.service.jugador.JugadorService;
@@ -37,5 +42,29 @@ public class JugadorServiceImpl implements JugadorService{
 		String apellido = IngresoPorTeclado.ingresarTexto().toUpperCase();
 		return apellido+", "+nombre;
 	}
+
+	@Override
+	public void mostrarTodos() {
+		System.out.println("\nLista de todos los jugadores de la liga GigaChad:");
+		System.out.printf("%-40s%-30s%-30s%-30s%n", "NOMBRE","EDAD","ES TITULAR","CANTIDAD DE GOLES");
+		for(Jugador jugador : listadoAlfabeticoDeJugadores(JugadorDB.jugadoresMapDB)) {
+			System.out.printf("%-40s%-30d%-30s%-30d%n",
+					jugador.getNombre(),
+					jugador.getEdad(),
+					jugador.isEsTitular()?"SI":"NO",
+					jugador.getCantidadDeGoles());
+		}
+		
+	}
+	
+	private List<Jugador> listadoAlfabeticoDeJugadores(Map<String, Jugador> jugadores){
+		List<Jugador> listaAlfa = new ArrayList<>();
+		for(Map.Entry<String, Jugador> jugador1 : jugadores.entrySet()) {
+			listaAlfa.add(jugador1.getValue());
+		}
+		return listaAlfa;
+	}
+	
+	
 
 }
