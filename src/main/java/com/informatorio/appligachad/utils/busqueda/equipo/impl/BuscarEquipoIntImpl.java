@@ -4,14 +4,39 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.informatorio.appligachad.database.domaindb.EquipoDB;
 import com.informatorio.appligachad.domain.Equipo;
 import com.informatorio.appligachad.input.IngresoPorTeclado;
+import com.informatorio.appligachad.service.equipo.EquipoService;
+import com.informatorio.appligachad.service.equipo.impl.EquipoServiceImpl;
 import com.informatorio.appligachad.utils.busqueda.equipo.BuscarEquipoInt;
 
 public class BuscarEquipoIntImpl implements BuscarEquipoInt{
+	
+	EquipoService equipoService = new EquipoServiceImpl();
 
 	@Override
-	public Equipo buscar(List<Equipo> equipos) {
+	public Equipo buscar() {
+		Equipo equipoEncontrado = new Equipo();
+		boolean sigueBucle = true;
+		while(sigueBucle) {
+			try {
+				equipoEncontrado = realizarBusqueda(EquipoDB.equiposDB);
+				sigueBucle = false;
+			} catch (NullPointerException e) {
+				System.out.println("1- Busque con otra inicial\n2- Cree un nuevo equipo.");
+				int opcion = IngresoPorTeclado.ingresarEnteroPositivo();
+				if(opcion == 2) {
+					System.out.println("Ingrese nombre del Equipo:");
+					EquipoDB.equiposDB.add(equipoService.crearEquipo(IngresoPorTeclado.ingresarTexto()));
+				}
+			}
+		}
+		
+		return equipoEncontrado;
+	}
+	
+	private Equipo realizarBusqueda(List<Equipo> equipos) {
 		Map<Integer, Equipo> mapaTemporal = new HashMap<>();
 		System.out.println("Ingrese la primer letra del nombre del Equipo:");
 		String letra = IngresoPorTeclado.ingresarTexto().toUpperCase();

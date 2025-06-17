@@ -2,6 +2,7 @@ package com.informatorio.appligachad.service.menu.impl;
 
 import com.informatorio.appligachad.input.IngresoPorTeclado;
 import com.informatorio.appligachad.service.menu.MenuService;
+import com.informatorio.appligachad.service.menu.impl.registro.MenuServiceRegistrarImpl;
 
 public class MenuServiceImpl implements MenuService{
 
@@ -22,6 +23,7 @@ public class MenuServiceImpl implements MenuService{
 		switch(condicion) {
 		case 1:
 			System.out.println("se está ejecutando la opción 1.\n");
+			MenuServiceRegistrarImpl.menuRegistro.mostrarMenu();
 			break;
 		case 2:
 			System.out.println("se está ejecutando la opción 2.\n");
