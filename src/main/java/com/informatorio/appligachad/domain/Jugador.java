@@ -15,7 +15,7 @@ public class Jugador {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Jugador(String nombre, String apellido, int edad, boolean esTitular) {
+	public Jugador(String nombre, int edad, boolean esTitular) {
 		super();
 		this.nombre = nombre;
 		this.edad = edad;

@@ -33,7 +33,7 @@ public class MenuServiceRegistrarImpl implements MenuService{
 		switch(condicion) {
 		case 1:
 			System.out.println("\nRegistro de Equipo sin Jugadores.\n\nIngrese nombre del Equipo:");
-			Equipo newEquipo = equipoService.crearEquipo(IngresoPorTeclado.ingresarTexto());
+			Equipo newEquipo = equipoService.crearEquipo(IngresoPorTeclado.ingresarTexto().toUpperCase());
 			EquipoDB.equiposMapDB.put(newEquipo.getNombre(), newEquipo);
 			break;
 		case 2:

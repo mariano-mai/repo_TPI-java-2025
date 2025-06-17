@@ -8,6 +8,8 @@ import com.informatorio.appligachad.service.equipo.impl.EquipoServiceImpl;
 import com.informatorio.appligachad.service.jugador.JugadorService;
 import com.informatorio.appligachad.service.jugador.impl.JugadorServiceImpl;
 import com.informatorio.appligachad.service.menu.MenuService;
+import com.informatorio.appligachad.utils.busqueda.equipo.BuscarEquipoInt;
+import com.informatorio.appligachad.utils.busqueda.jugador.BuscarJugadorInt;
 
 public class MenuServiceRegistroJugadorImpl implements MenuService{
 	
@@ -15,6 +17,8 @@ public class MenuServiceRegistroJugadorImpl implements MenuService{
 	
 	private JugadorService jugadorService = new JugadorServiceImpl();
 	private EquipoService equipoService = new EquipoServiceImpl();
+	private BuscarEquipoInt buscarEquipo;
+	private BuscarJugadorInt buscarJugador;
 
 	@Override
 	public void mostrarMenu() {
@@ -37,11 +41,11 @@ public class MenuServiceRegistroJugadorImpl implements MenuService{
 			break;
 		case 2:
 			System.out.println("se está ejecutando la opción de registrar jugador.\n");
-			equipoService.asignarJugadorAEquipo(null, null);
+			equipoService.asignarJugadorAEquipo(buscarEquipo.buscar(), buscarJugador.buscar());
 			break;
 		case 3:
 			System.out.println("se está ejecutando la opción de registrar partido.\n");
-			equipoService.transferirJugador(null, null);
+			equipoService.transferirJugador(buscarJugador.buscar(), buscarEquipo.buscar());
 			break;
 		default:
 		}
