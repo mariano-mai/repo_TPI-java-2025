@@ -115,7 +115,27 @@ public class JugadorServiceImpl implements JugadorService{
 		}
 		return listaRetorno;
 	}
-	
-	
+
+	@Override
+	public void goleadorLiga() {
+		hiceTodoElTrabajo(JugadorDB.jugadoresMapDB);
+		
+	}
+		
+	private void hiceTodoElTrabajo(Map<String, Jugador> jugadores) {
+		Jugador goleador = new Jugador("Genericus Golesmany",0,true);
+		for(Map.Entry<String, Jugador> jugador1 : jugadores.entrySet()) {
+			if(jugador1.getValue().getCantidadDeGoles()<goleador.getCantidadDeGoles()) {
+				goleador = jugador1.getValue();
+			}
+		}
+		System.out.println("\n\t==============");
+		System.out.println("\tGOLEADOR DE LA LIGA GIGACHAD");
+		System.out.println("\t==============");
+		System.out.println("\t¡"+goleador.getCantidadDeGoles()+" GOLES!");
+		System.out.println("\t¡El GigaChad "+goleador.getNombre()+"!");
+		System.out.println("\tdel "+goleador.getEquipo().getNombre());
+		System.out.println("\t==============\n");
+	}
 
 }

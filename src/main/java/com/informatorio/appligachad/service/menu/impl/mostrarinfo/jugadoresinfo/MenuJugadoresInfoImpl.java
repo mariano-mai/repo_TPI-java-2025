@@ -39,6 +39,7 @@ public class MenuJugadoresInfoImpl implements MenuService{
 			break;
 		case 4:
 			System.out.println("cartel con información del goleador de la liga.");
+			jugadorService.goleadorLiga();
 			break;
 		default:
 			

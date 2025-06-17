@@ -15,5 +15,7 @@ public interface JugadorService {
 	void mostrarTitulares();
 	
 	void mostrarSuplentes();
+	
+	void goleadorLiga();
 
 }
