@@ -2,6 +2,8 @@ package com.informatorio.appligachad.service.menu.impl.registro;
 
 import com.informatorio.appligachad.database.domaindb.EquipoDB;
 import com.informatorio.appligachad.database.domaindb.PartidoDB;
+import com.informatorio.appligachad.domain.Equipo;
+import com.informatorio.appligachad.domain.Partido;
 import com.informatorio.appligachad.input.IngresoPorTeclado;
 import com.informatorio.appligachad.service.equipo.EquipoService;
 import com.informatorio.appligachad.service.menu.MenuService;
@@ -31,7 +33,8 @@ public class MenuServiceRegistrarImpl implements MenuService{
 		switch(condicion) {
 		case 1:
 			System.out.println("\nRegistro de Equipo sin Jugadores.\n\nIngrese nombre del Equipo:");
-			EquipoDB.equiposDB.add(equipoService.crearEquipo(IngresoPorTeclado.ingresarTexto()));
+			Equipo newEquipo = equipoService.crearEquipo(IngresoPorTeclado.ingresarTexto());
+			EquipoDB.equiposMapDB.put(newEquipo.getNombre(), newEquipo);
 			break;
 		case 2:
 			System.out.println("\nRegistro de Jugadores\n");
@@ -39,7 +42,8 @@ public class MenuServiceRegistrarImpl implements MenuService{
 			break;
 		case 3:
 			System.out.println("se está ejecutando la opción de registrar partido.\n");
-			PartidoDB.partidoDB.add(partidoService.crearPartido());
+			Partido newPartido = partidoService.crearPartido();
+			PartidoDB.partidoMapDB.put(newPartido.getId(), newPartido);
 			break;
 		default:
 		

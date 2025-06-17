@@ -2,6 +2,7 @@ package com.informatorio.appligachad.service.partido.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.informatorio.appligachad.database.domaindb.EquipoDB;
 import com.informatorio.appligachad.domain.Equipo;
@@ -13,7 +14,7 @@ public class PartidoServiceImpl implements PartidoService{
 
 	@Override
 	public Partido crearPartido() {
-		Partido nuevoPartido = new Partido(listaDeEquipos());
+		Partido nuevoPartido = new Partido(UUID.randomUUID(), listaDeEquipos());
 		return nuevoPartido;
 	}
 	
