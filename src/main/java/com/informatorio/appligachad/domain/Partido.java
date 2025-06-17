@@ -2,15 +2,18 @@ package com.informatorio.appligachad.domain;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class Partido {
 	
+	private UUID id;
 	private List<Equipo> equipos;
 	private String resultado;
 	private Map<Jugador, Integer> golesPorJugador;
 	
-	public Partido(List<Equipo> equipos) {
+	public Partido(UUID id, List<Equipo> equipos) {
 		super();
+		this.id = id;
 		this.equipos = equipos;
 	}
 
@@ -28,6 +31,14 @@ public class Partido {
 
 	public void setGolesPorJugador(Map<Jugador, Integer> golesPorJugador) {
 		this.golesPorJugador = golesPorJugador;
+	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
 	}
 	
 	

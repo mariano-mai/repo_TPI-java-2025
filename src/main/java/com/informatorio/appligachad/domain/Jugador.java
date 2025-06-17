@@ -1,15 +1,12 @@
 package com.informatorio.appligachad.domain;
 
-import java.util.List;
-
 public class Jugador {
 	
 	private String nombre;
-	private String apellido;
 	private int edad;
 	private int cantidadDeGoles;
 	private int minutosJugados;
-	private List<Partido> partidosIngresadosDesdeBanco;
+	private int partidosIngresados;
 	private boolean esTitular;
 	private Equipo equipo;
 	
@@ -21,17 +18,12 @@ public class Jugador {
 	public Jugador(String nombre, String apellido, int edad, boolean esTitular) {
 		super();
 		this.nombre = nombre;
-		this.apellido = apellido;
 		this.edad = edad;
 		this.esTitular = esTitular;
 	}
 
 	public String getNombre() {
 		return nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
 	}
 
 	public int getCantidadDeGoles() {
@@ -42,8 +34,8 @@ public class Jugador {
 		return minutosJugados;
 	}
 
-	public List<Partido> getPartidosIngresadosDesdeBanco() {
-		return partidosIngresadosDesdeBanco;
+	public int getPartidosIngresados() {
+		return partidosIngresados;
 	}
 
 	public boolean isEsTitular() {
@@ -66,8 +58,8 @@ public class Jugador {
 		this.minutosJugados = minutosJugados;
 	}
 
-	public void setPartidosIngresadosDesdeBanco(List<Partido> partidosIngresadosDesdeBanco) {
-		this.partidosIngresadosDesdeBanco = partidosIngresadosDesdeBanco;
+	public void setPartidosIngresadosDesdeBanco(int partidosIngresados) {
+		this.partidosIngresados = partidosIngresados;
 	}	
 
 }
