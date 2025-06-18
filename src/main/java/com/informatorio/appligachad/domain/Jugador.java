@@ -8,7 +8,7 @@ public class Jugador {
 	private int minutosJugados;
 	private int partidosIngresados;
 	private boolean esTitular;
-	private Equipo equipo;
+	private Equipo equipo = new Equipo();
 	
 	public Jugador() {
 		super();

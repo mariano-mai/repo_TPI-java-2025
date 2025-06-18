@@ -27,17 +27,22 @@ public class EquipoServiceImpl implements EquipoService{
 
 	@Override
 	public void asignarJugadorAEquipo(Equipo equipo, Jugador jugador) {
+		Equipo newEquipo = new Equipo();
+		Jugador newJugador = new Jugador();
 		int contador = 0;
-		for(Jugador jugador1 : equipo.getJugadores()) {
+		for(Jugador jugador1 : newEquipo.getJugadores()) {
 			if(jugador1.isEsTitular()) {
 				contador++;
 			}
 		}
-		if(!jugador.isEsTitular()) {
-			equipo.getJugadores().add(jugador);
+		if(!newJugador.isEsTitular()) {
+			newEquipo.getJugadores().add(newJugador);
+			newJugador.setEquipo(newEquipo);
 		}else {
 			if(contador<11) {
-				equipo.getJugadores().add(jugador);
+				newEquipo.getJugadores().add(newJugador);
+				newJugador.setEquipo(newEquipo);
+				
 			}else {
 				System.out.println("Se llegó al límite de titulares.");
 			}
@@ -49,6 +54,7 @@ public class EquipoServiceImpl implements EquipoService{
 	public void transferirJugador(Jugador jugador, Equipo nuevoEquipo) {
 		Jugador nuevoJugador = jugador;
 		int ubicacion = jugador.getEquipo().getJugadores().indexOf(jugador);
+		System.out.println(ubicacion);
 		jugador.getEquipo().getJugadores().remove(ubicacion);
 		nuevoEquipo.getJugadores().add(nuevoJugador);
 	}

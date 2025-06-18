@@ -6,15 +6,17 @@ import com.informatorio.appligachad.domain.Equipo;
 import com.informatorio.appligachad.domain.Partido;
 import com.informatorio.appligachad.input.IngresoPorTeclado;
 import com.informatorio.appligachad.service.equipo.EquipoService;
+import com.informatorio.appligachad.service.equipo.impl.EquipoServiceImpl;
 import com.informatorio.appligachad.service.menu.MenuService;
 import com.informatorio.appligachad.service.partido.PartidoService;
+import com.informatorio.appligachad.service.partido.impl.PartidoServiceImpl;
 
 public class MenuServiceRegistrarImpl implements MenuService{
 	
 	public static MenuService menuRegistro = new MenuServiceRegistrarImpl();
 	
-	private EquipoService equipoService;
-	private PartidoService partidoService;
+	private EquipoService equipoService = new EquipoServiceImpl();
+	private PartidoService partidoService = new PartidoServiceImpl();
 
 	@Override
 	public void mostrarMenu() {
