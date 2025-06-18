@@ -11,8 +11,12 @@ import com.informatorio.appligachad.domain.Equipo;
 import com.informatorio.appligachad.domain.Jugador;
 import com.informatorio.appligachad.input.IngresoPorTeclado;
 import com.informatorio.appligachad.service.jugador.JugadorService;
+import com.informatorio.appligachad.utils.busqueda.jugador.BuscarJugadorInt;
+import com.informatorio.appligachad.utils.busqueda.jugador.impl.BuscarJugadorIntImpl;
 
 public class JugadorServiceImpl implements JugadorService{
+	
+	private BuscarJugadorInt buscarJugador = new BuscarJugadorIntImpl();
 
 	@Override
 	public Jugador crearJugador() {
@@ -138,6 +142,27 @@ public class JugadorServiceImpl implements JugadorService{
 		System.out.println("\t¡El GigaChad "+goleador.getNombre()+"!");
 		System.out.println("\tdel "+goleador.getEquipo().getNombre());
 		System.out.println("\t==============\n");
+	}
+
+	@Override
+	public void agregarDatos() {
+		Jugador jugador = buscarJugador.buscar();
+		System.out.println("Ingrese la cantidad de goles anotados por el jugador en su último partido: ");
+		int cantidad = IngresoPorTeclado.ingresarEnteroPositivo();
+		jugador.setCantidadDeGoles(jugador.getCantidadDeGoles() + cantidad);
+		if(jugador.isEsTitular()) {
+			System.out.println("Ingrese el tiempo que jugó el jugador, en minutos: ");
+			int minutos = IngresoPorTeclado.ingresarEnteroPositivo();
+			jugador.setMinutosJugados(jugador.getMinutosJugados() + minutos);
+		}else {
+			System.out.println("¿Ingresó a jugar en el último partido?\n1- SI\n2- NO");
+			int ingreso = IngresoPorTeclado.ingresarEnteroPositivo();
+			switch(ingreso) {
+				case 1 -> jugador.setPartidosIngresadosDesdeBanco(jugador.getPartidosIngresados()+1);
+				default -> System.out.println("Entendido.");
+			}
+		}
+		
 	}
 
 }
