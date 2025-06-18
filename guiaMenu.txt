@@ -1,0 +1,25 @@
+Guía del Menú
+
+1-REGISTRAR
+	1- Registrar Equipo
+	2- Registrar Jugador
+		1- Nuevo Jugador
+		2- Asignar Jugador a un Equipo ######## EN PROCESO ###########################
+		3- Transferir Jugador ################# EN PROCESO ###########################
+		4- Volver al menú anterior
+	3- Registrar Partido
+	4- Volver al menú anterior
+2-INGRESAR INFORMACIÓN
+3-MOSTRAR INFORMACIÓN
+	1- Jugadores
+		1- Ver todos los jugadores
+		2- Ver Jugadores Titulares
+		3- Ver Jugadores Suplentes
+		4- Goleador de la Liga ################ EN PROCESO ###########################
+		5- Volver al menú anterior
+	2- Equipos
+	3- Reportes ################################### EN PROCESO ###########################
+		1- Ver Reporte de Liga
+		2- Ver Reporte de Equipo
+	4- Volver al menú anterior
+4-SALIR DE LA APLICACIÓN
