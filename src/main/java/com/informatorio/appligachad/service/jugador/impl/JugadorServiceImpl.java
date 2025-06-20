@@ -10,6 +10,8 @@ import com.informatorio.appligachad.database.domaindb.JugadorDB;
 import com.informatorio.appligachad.domain.Equipo;
 import com.informatorio.appligachad.domain.Jugador;
 import com.informatorio.appligachad.input.IngresoPorTeclado;
+import com.informatorio.appligachad.service.equipo.EquipoService;
+import com.informatorio.appligachad.service.equipo.impl.EquipoServiceImpl;
 import com.informatorio.appligachad.service.jugador.JugadorService;
 import com.informatorio.appligachad.utils.busqueda.jugador.BuscarJugadorInt;
 import com.informatorio.appligachad.utils.busqueda.jugador.impl.BuscarJugadorIntImpl;
@@ -17,6 +19,7 @@ import com.informatorio.appligachad.utils.busqueda.jugador.impl.BuscarJugadorInt
 public class JugadorServiceImpl implements JugadorService{
 	
 	private BuscarJugadorInt buscarJugador = new BuscarJugadorIntImpl();
+	private EquipoService equipoService = new EquipoServiceImpl();
 
 	@Override
 	public Jugador crearJugador() {
@@ -150,6 +153,7 @@ public class JugadorServiceImpl implements JugadorService{
 		System.out.println("Ingrese la cantidad de goles anotados por el jugador en su último partido: ");
 		int cantidad = IngresoPorTeclado.ingresarEnteroPositivo();
 		jugador.setCantidadDeGoles(jugador.getCantidadDeGoles() + cantidad);
+		equipoService.totalDeGoles(jugador.getEquipo());
 		if(jugador.isEsTitular()) {
 			System.out.println("Ingrese el tiempo que jugó el jugador, en minutos: ");
 			int minutos = IngresoPorTeclado.ingresarEnteroPositivo();

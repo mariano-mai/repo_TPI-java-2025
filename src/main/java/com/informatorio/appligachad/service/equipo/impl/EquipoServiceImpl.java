@@ -10,8 +10,18 @@ import com.informatorio.appligachad.database.domaindb.EquipoDB;
 import com.informatorio.appligachad.domain.Equipo;
 import com.informatorio.appligachad.domain.Jugador;
 import com.informatorio.appligachad.service.equipo.EquipoService;
+import com.informatorio.appligachad.utils.busqueda.equipo.BuscarEquipoInt;
+import com.informatorio.appligachad.utils.busqueda.equipo.impl.BuscarEquipoIntImpl;
+import com.informatorio.appligachad.utils.busqueda.jugador.BuscarJugadorInt;
+import com.informatorio.appligachad.utils.busqueda.jugador.impl.BuscarJugadorIntImpl;
 
 public class EquipoServiceImpl implements EquipoService{
+	
+	Jugador nuevoJugador;
+	Equipo nuevoEquipo;
+	
+	BuscarJugadorInt buscarJugador = new BuscarJugadorIntImpl();
+	BuscarEquipoInt buscarEquipo = new BuscarEquipoIntImpl();
 
 	@Override
 	public Equipo crearEquipo(String nombre) {
@@ -26,25 +36,28 @@ public class EquipoServiceImpl implements EquipoService{
 	}
 
 	@Override
-	public void asignarJugadorAEquipo(Equipo equipo, Jugador jugador) {
-		Equipo newEquipo = new Equipo();
-		Jugador newJugador = new Jugador();
+	public void asignarJugadorAEquipo() {
+		nuevoJugador = buscarJugador.buscar();
+		nuevoEquipo = buscarEquipo.buscar();
 		int contador = 0;
-		for(Jugador jugador1 : newEquipo.getJugadores()) {
+		for(Jugador jugador1 : nuevoEquipo.getJugadores()) {
 			if(jugador1.isEsTitular()) {
 				contador++;
 			}
 		}
-		if(!newJugador.isEsTitular()) {
-			newEquipo.getJugadores().add(newJugador);
-			newJugador.setEquipo(newEquipo);
+		if(!nuevoJugador.isEsTitular()) {
+			nuevoEquipo.getJugadores().add(nuevoJugador);
+			nuevoJugador.setEquipo(nuevoEquipo);
+			System.out.println("Jugador "+nuevoJugador.getNombre()+" asignado con éxito al equipo "+nuevoEquipo.getNombre());
+			System.out.println("Cantidad de jugadores en el equipo: "+nuevoEquipo.getJugadores().size());
 		}else {
 			if(contador<11) {
-				newEquipo.getJugadores().add(newJugador);
-				newJugador.setEquipo(newEquipo);
-				
+				nuevoEquipo.getJugadores().add(nuevoJugador);
+				nuevoJugador.setEquipo(nuevoEquipo);
+				System.out.println("Jugador "+nuevoJugador.getNombre()+" asignado con éxito al equipo "+nuevoEquipo.getNombre());
+				System.out.println("Cantidad de jugadores en el equipo: "+nuevoEquipo.getJugadores().size());
 			}else {
-				System.out.println("Se llegó al límite de titulares.");
+				System.out.println("No se pudo asignar al jugador. Se alcanzó el máximo de titulares en este equipo");
 			}
 		}
 		
@@ -78,6 +91,16 @@ public class EquipoServiceImpl implements EquipoService{
 		Collections.sort(listaGamma, Comparator.comparingInt(equipo->equipo.getCantidadDeGoles()));
 		Collections.reverse(listaGamma);
 		return listaGamma;
+	}
+
+	@Override
+	public void totalDeGoles(Equipo equipo) {
+		int goles = 0;
+		for(Jugador jugador : equipo.getJugadores()) {
+			goles+=jugador.getCantidadDeGoles();
+		}
+		equipo.setCantidadDeGoles(goles);
+		
 	}
 
 }

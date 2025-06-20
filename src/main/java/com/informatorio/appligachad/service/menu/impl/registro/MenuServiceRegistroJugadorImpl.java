@@ -43,7 +43,10 @@ public class MenuServiceRegistroJugadorImpl implements MenuService{
 			break;
 		case 2:
 			System.out.println("se está ejecutando la opción de registrar jugador.\n");
-			equipoService.asignarJugadorAEquipo(buscarEquipo.buscar(), buscarJugador.buscar());
+			//asignar buscarEquipo  un atributo, lo mismo con buscarJugador
+			//comprobar que no sean nulos
+			//en ete caso no conviene poner el método como parámetro.
+			equipoService.asignarJugadorAEquipo();
 			break;
 		case 3:
 			System.out.println("se está ejecutando la opción de registrar partido.\n");

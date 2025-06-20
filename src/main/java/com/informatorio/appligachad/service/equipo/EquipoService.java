@@ -11,10 +11,12 @@ public interface EquipoService {
 	
 	Equipo crearEquipo(String nombre, List<Jugador> jugadores);
 	
-	void asignarJugadorAEquipo(Equipo equipo, Jugador jugador);
+	void asignarJugadorAEquipo();
 	
 	void transferirJugador(Jugador jugador, Equipo nuevoEquipo);
 	
 	void mostrarTodos();
+	
+	void totalDeGoles(Equipo equipo);
 
 }

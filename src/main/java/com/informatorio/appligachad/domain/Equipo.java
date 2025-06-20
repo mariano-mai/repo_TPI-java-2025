@@ -41,14 +41,9 @@ public class Equipo {
 		return cantidadDeGoles;
 	}
 
-	public void setCantidadDeGoles() {
-		int total = 0;
-		for(Jugador jugador : this.jugadores) {
-			total+=jugador.getCantidadDeGoles();
-		}
-		this.cantidadDeGoles = total;
+	public void setCantidadDeGoles(int cantidadDeGoles) {
+		this.cantidadDeGoles = cantidadDeGoles;
 	}
-	
-	
 
+	
 }
