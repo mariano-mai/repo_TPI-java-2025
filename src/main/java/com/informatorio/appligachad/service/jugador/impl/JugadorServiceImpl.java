@@ -134,7 +134,7 @@ public class JugadorServiceImpl implements JugadorService{
 		Jugador goleador = new Jugador("Genericus Golesmany",0,true);
 		goleador.setEquipo(new Equipo("Goles Saint-Generico"));
 		for(Map.Entry<String, Jugador> jugador1 : jugadores.entrySet()) {
-			if(jugador1.getValue().getCantidadDeGoles()<goleador.getCantidadDeGoles()) {
+			if(jugador1.getValue().getCantidadDeGoles()>goleador.getCantidadDeGoles()) {
 				goleador = jugador1.getValue();
 			}
 		}
