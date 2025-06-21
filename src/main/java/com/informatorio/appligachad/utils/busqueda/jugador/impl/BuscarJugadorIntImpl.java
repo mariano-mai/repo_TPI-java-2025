@@ -9,6 +9,8 @@ import com.informatorio.appligachad.input.IngresoPorTeclado;
 import com.informatorio.appligachad.utils.busqueda.jugador.BuscarJugadorInt;
 
 public class BuscarJugadorIntImpl implements BuscarJugadorInt{
+	
+	Jugador nuevoJugador;
 
 	@Override
 	public Jugador buscar() {
@@ -18,7 +20,6 @@ public class BuscarJugadorIntImpl implements BuscarJugadorInt{
 	
 	private Jugador buscarJugador(Map<String, Jugador> jugadores) {
 		Map<Integer, Jugador> mapaTemporal = new HashMap<>();
-		Jugador jugador = new Jugador();
 		System.out.println("\nSelección de Jugador");
 		System.out.println("Ingrese la primer letra del APELLIDO del jugador: ");
 		String letra = IngresoPorTeclado.ingresarTexto().toUpperCase();
@@ -34,13 +35,13 @@ public class BuscarJugadorIntImpl implements BuscarJugadorInt{
 			for(Map.Entry<Integer, Jugador> jugador2 : mapaTemporal.entrySet()) {
 				System.out.println(jugador2.getKey()+"- "+jugador2.getValue().getNombre());
 			}
+			int valor = IngresoPorTeclado.ingresarEnteroPositivo();
+			nuevoJugador = mapaTemporal.get(valor);
 		}else if(i==1) {
 			System.out.println("No se encontraron coincidencias.");
-			System.out.println("NULL PARA TI!!!");
+			System.out.println("Pruebe con otra inicial o registre un jugador nuevo.\n");
 		}
-		int valor = IngresoPorTeclado.ingresarEnteroPositivo();
-		jugador = mapaTemporal.get(valor);
-		return jugador;
+		return nuevoJugador;
 	}
 	
 

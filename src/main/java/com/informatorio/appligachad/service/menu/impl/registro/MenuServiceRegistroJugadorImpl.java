@@ -1,6 +1,7 @@
 package com.informatorio.appligachad.service.menu.impl.registro;
 
 import com.informatorio.appligachad.database.domaindb.JugadorDB;
+import com.informatorio.appligachad.domain.Equipo;
 import com.informatorio.appligachad.domain.Jugador;
 import com.informatorio.appligachad.input.IngresoPorTeclado;
 import com.informatorio.appligachad.service.equipo.EquipoService;
@@ -16,6 +17,9 @@ import com.informatorio.appligachad.utils.busqueda.jugador.impl.BuscarJugadorInt
 public class MenuServiceRegistroJugadorImpl implements MenuService{
 	
 	public static MenuService registroJugador = new MenuServiceRegistroJugadorImpl();
+	
+	Equipo nuevoEquipo;
+	Jugador nuevoJugador;
 	
 	private JugadorService jugadorService = new JugadorServiceImpl();
 	private EquipoService equipoService = new EquipoServiceImpl();
@@ -38,19 +42,37 @@ public class MenuServiceRegistroJugadorImpl implements MenuService{
 		
 		switch(condicion) {
 		case 1:
+			System.out.println("\nAquí puede registrar un nuevo jugador.\n");
 			Jugador newJugador = jugadorService.crearJugadorV2();
 			JugadorDB.jugadoresMapDB.put(newJugador.getNombre(), newJugador);
 			break;
 		case 2:
-			System.out.println("se está ejecutando la opción de registrar jugador.\n");
-			//asignar buscarEquipo  un atributo, lo mismo con buscarJugador
-			//comprobar que no sean nulos
-			//en ete caso no conviene poner el método como parámetro.
-			equipoService.asignarJugadorAEquipo();
+			System.out.println("\nAquí puede asignar un jugador a un equipo.\n");
+			nuevoEquipo = buscarEquipo.buscar();
+			if(nuevoEquipo==null) {
+				break;
+			}else {
+				nuevoJugador = buscarJugador.buscar();
+				if(nuevoJugador==null) {
+					break;
+				}else {
+					equipoService.asignarJugadorAEquipo(nuevoJugador, nuevoEquipo);
+				}
+			}
 			break;
 		case 3:
-			System.out.println("se está ejecutando la opción de registrar partido.\n");
-			equipoService.transferirJugador(buscarJugador.buscar(), buscarEquipo.buscar());
+			System.out.println("\nAquí se puede transferir un jugador de un equipo a otro.\n");
+			nuevoEquipo = buscarEquipo.buscar();
+			if(nuevoEquipo==null) {
+				break;
+			}else {
+				nuevoJugador = buscarJugador.buscar();
+				if(nuevoJugador==null) {
+					break;
+				}else {
+					equipoService.transferirJugador(nuevoJugador, nuevoEquipo);
+				}
+			}
 			break;
 		default:
 		}

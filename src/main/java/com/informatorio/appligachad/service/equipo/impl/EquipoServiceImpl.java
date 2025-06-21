@@ -36,26 +36,25 @@ public class EquipoServiceImpl implements EquipoService{
 	}
 
 	@Override
-	public void asignarJugadorAEquipo() {
-		nuevoJugador = buscarJugador.buscar();
-		nuevoEquipo = buscarEquipo.buscar();
+	public void asignarJugadorAEquipo(Jugador jugador, Equipo equipo) {
+		
 		int contador = 0;
-		for(Jugador jugador1 : nuevoEquipo.getJugadores()) {
+		for(Jugador jugador1 : equipo.getJugadores()) {
 			if(jugador1.isEsTitular()) {
 				contador++;
 			}
 		}
-		if(!nuevoJugador.isEsTitular()) {
-			nuevoEquipo.getJugadores().add(nuevoJugador);
-			nuevoJugador.setEquipo(nuevoEquipo);
-			System.out.println("Jugador "+nuevoJugador.getNombre()+" asignado con éxito al equipo "+nuevoEquipo.getNombre());
-			System.out.println("Cantidad de jugadores en el equipo: "+nuevoEquipo.getJugadores().size());
+		if(!jugador.isEsTitular()) {
+			equipo.getJugadores().add(jugador);
+			jugador.setEquipo(equipo);
+			System.out.println("Jugador "+jugador.getNombre()+" asignado con éxito al equipo "+equipo.getNombre());
+			System.out.println("Cantidad de jugadores en el equipo: "+equipo.getJugadores().size());
 		}else {
 			if(contador<11) {
-				nuevoEquipo.getJugadores().add(nuevoJugador);
-				nuevoJugador.setEquipo(nuevoEquipo);
-				System.out.println("Jugador "+nuevoJugador.getNombre()+" asignado con éxito al equipo "+nuevoEquipo.getNombre());
-				System.out.println("Cantidad de jugadores en el equipo: "+nuevoEquipo.getJugadores().size());
+				equipo.getJugadores().add(jugador);
+				jugador.setEquipo(equipo);
+				System.out.println("Jugador "+jugador.getNombre()+" asignado con éxito al equipo "+equipo.getNombre());
+				System.out.println("Cantidad de jugadores en el equipo: "+equipo.getJugadores().size());
 			}else {
 				System.out.println("No se pudo asignar al jugador. Se alcanzó el máximo de titulares en este equipo");
 			}
@@ -65,7 +64,7 @@ public class EquipoServiceImpl implements EquipoService{
 
 	@Override
 	public void transferirJugador(Jugador jugador, Equipo nuevoEquipo) {
-		Jugador nuevoJugador = jugador;
+		//Jugador nuevoJugador = jugador;
 		int ubicacion = jugador.getEquipo().getJugadores().indexOf(jugador);
 		System.out.println(ubicacion);
 		jugador.getEquipo().getJugadores().remove(ubicacion);

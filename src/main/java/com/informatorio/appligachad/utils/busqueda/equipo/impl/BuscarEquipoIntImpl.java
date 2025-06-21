@@ -9,6 +9,8 @@ import com.informatorio.appligachad.input.IngresoPorTeclado;
 import com.informatorio.appligachad.utils.busqueda.equipo.BuscarEquipoInt;
 
 public class BuscarEquipoIntImpl implements BuscarEquipoInt{
+	
+	Equipo nuevoEquipo;
 
 	@Override
 	public Equipo buscar() {
@@ -17,7 +19,6 @@ public class BuscarEquipoIntImpl implements BuscarEquipoInt{
 	
 	private Equipo buscarEquipo(Map<String, Equipo> equipos) {
 		Map<Integer, Equipo> mapaTemporal = new HashMap<>();
-		Equipo equipo = new Equipo();
 		System.out.println("\nSelección de Equipo");
 		System.out.println("Ingrese la primer letra del nombre del equipo: ");
 		String letra = IngresoPorTeclado.ingresarTexto().toUpperCase();
@@ -33,12 +34,12 @@ public class BuscarEquipoIntImpl implements BuscarEquipoInt{
 			for(Map.Entry<Integer, Equipo> equipo2 : mapaTemporal.entrySet()) {
 				System.out.println(equipo2.getKey()+"- "+equipo2.getValue().getNombre());
 			}
+			int valor = IngresoPorTeclado.ingresarEnteroPositivo();
+			nuevoEquipo = mapaTemporal.get(valor);
 		}else if(i==1) {
 			System.out.println("No se encontraron coincidencias.");
-			System.out.println("NULL PARA TI!!!!");
+			System.out.println("Pruebe con otra inicial o registre un equipo nuevo.\n");
 		}
-		int valor = IngresoPorTeclado.ingresarEnteroPositivo();
-		equipo = mapaTemporal.get(valor);
-		return equipo;
+		return nuevoEquipo;
 	}
 }
