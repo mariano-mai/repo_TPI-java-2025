@@ -62,15 +62,15 @@ public class MenuServiceRegistroJugadorImpl implements MenuService{
 			break;
 		case 3:
 			System.out.println("\nAquí se puede transferir un jugador de un equipo a otro.\n");
-			nuevoEquipo = buscarEquipo.buscar();
-			if(nuevoEquipo==null) {
+			nuevoJugador = buscarJugador.buscar();
+			if(nuevoJugador==null) {
 				break;
 			}else {
-				nuevoJugador = buscarJugador.buscar();
-				if(nuevoJugador==null) {
+				Equipo nuevoEquipo2 = buscarEquipo.buscar(nuevoJugador);
+				if(nuevoEquipo==null) {
 					break;
 				}else {
-					equipoService.transferirJugador(nuevoJugador, nuevoEquipo);
+					equipoService.transferirJugador(nuevoJugador, nuevoEquipo2);
 				}
 			}
 			break;

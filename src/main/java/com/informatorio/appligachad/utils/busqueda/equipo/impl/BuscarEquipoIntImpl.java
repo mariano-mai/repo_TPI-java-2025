@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.informatorio.appligachad.database.domaindb.EquipoDB;
 import com.informatorio.appligachad.domain.Equipo;
+import com.informatorio.appligachad.domain.Jugador;
 import com.informatorio.appligachad.input.IngresoPorTeclado;
 import com.informatorio.appligachad.utils.busqueda.equipo.BuscarEquipoInt;
 
@@ -42,4 +43,33 @@ public class BuscarEquipoIntImpl implements BuscarEquipoInt{
 		}
 		return nuevoEquipo;
 	}
+
+	@Override
+	public Equipo buscar(Jugador jugador) {
+		return buscarOtrosEquipos(jugador, EquipoDB.equiposMapDB);
+	}
+	
+	private Equipo buscarOtrosEquipos(Jugador jugador, Map<String, Equipo> equipos) {
+		Map<Integer, Equipo> mapaTemporal = new HashMap<>();
+		int i = 1;
+		for(Map.Entry<String, Equipo> equipo1 : equipos.entrySet()) {
+			if(!equipo1.getValue().equals(jugador.getEquipo())) {
+				mapaTemporal.put(i, equipo1.getValue());
+				i++;
+			}
+		}
+		if(i!=1) {
+			System.out.println("Seleccione el equipo: ");
+			for(Map.Entry<Integer, Equipo> equipo2 : mapaTemporal.entrySet()) {
+				System.out.println(equipo2.getKey()+"- "+equipo2.getValue().getNombre());
+			}
+			int valor = IngresoPorTeclado.ingresarEnteroPositivo();
+			nuevoEquipo = mapaTemporal.get(valor);
+		}else if(i==1) {
+			System.out.println("No se encontraron otros equipos.");
+			System.out.println("Registre otro equipo al cual transferir al jugador.\n");
+		}
+		return nuevoEquipo;
+	}
+	
 }

@@ -19,6 +19,8 @@ public class EquipoServiceImpl implements EquipoService{
 	
 	Jugador nuevoJugador;
 	Equipo nuevoEquipo;
+	Equipo equipoOriginal;
+	int ubicacion;
 	
 	BuscarJugadorInt buscarJugador = new BuscarJugadorIntImpl();
 	BuscarEquipoInt buscarEquipo = new BuscarEquipoIntImpl();
@@ -64,11 +66,13 @@ public class EquipoServiceImpl implements EquipoService{
 
 	@Override
 	public void transferirJugador(Jugador jugador, Equipo nuevoEquipo) {
-		//Jugador nuevoJugador = jugador;
-		int ubicacion = jugador.getEquipo().getJugadores().indexOf(jugador);
-		System.out.println(ubicacion);
-		jugador.getEquipo().getJugadores().remove(ubicacion);
-		nuevoEquipo.getJugadores().add(nuevoJugador);
+		equipoOriginal = jugador.getEquipo();
+		ubicacion = equipoOriginal.getJugadores().indexOf(jugador);
+		nuevoEquipo.getJugadores().add(jugador);
+		equipoOriginal.getJugadores().remove(ubicacion);
+		jugador.setEquipo(nuevoEquipo);
+		System.out.println("Jugador "+jugador.getNombre()+" transferido del equipo "+equipoOriginal.getNombre()+
+				" al equipo "+jugador.getEquipo().getNombre()+" de manera exitosa.");
 	}
 
 	@Override
