@@ -48,9 +48,11 @@ public class JugadorServiceImpl implements JugadorService{
 	private String generarNombreCompleto() {
 		System.out.println("Ingrese nombre del jugador:");
 		String nombre = IngresoPorTeclado.ingresarTexto();
+		String inicial = nombre.substring(0, 1).toUpperCase();
+		String resto = nombre.substring(1);
 		System.out.println("Ingrese apellido del jugador:");
 		String apellido = IngresoPorTeclado.ingresarTexto().toUpperCase();
-		return apellido+", "+nombre;
+		return apellido+", "+inicial+resto;
 	}
 
 	@Override

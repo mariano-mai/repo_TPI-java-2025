@@ -5,7 +5,7 @@ Guía del Menú
 	2- Registrar Jugador
 		1- Nuevo Jugador
 		2- Asignar Jugador a un Equipo
-		3- Transferir Jugador ################# EN PROCESO ###########################
+		3- Transferir Jugador
 		4- Volver al menú anterior
 	3- Registrar Partido
 	4- Volver al menú anterior

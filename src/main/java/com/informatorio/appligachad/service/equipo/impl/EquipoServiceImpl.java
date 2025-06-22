@@ -68,11 +68,16 @@ public class EquipoServiceImpl implements EquipoService{
 	public void transferirJugador(Jugador jugador, Equipo nuevoEquipo) {
 		equipoOriginal = jugador.getEquipo();
 		ubicacion = equipoOriginal.getJugadores().indexOf(jugador);
-		nuevoEquipo.getJugadores().add(jugador);
-		equipoOriginal.getJugadores().remove(ubicacion);
-		jugador.setEquipo(nuevoEquipo);
-		System.out.println("Jugador "+jugador.getNombre()+" transferido del equipo "+equipoOriginal.getNombre()+
-				" al equipo "+jugador.getEquipo().getNombre()+" de manera exitosa.");
+		if(equipoOriginal.equals(nuevoEquipo)) {
+			System.out.println("No se pudo realizar la transferencia.\n");
+		}else {
+			nuevoEquipo.getJugadores().add(jugador);
+			equipoOriginal.getJugadores().remove(ubicacion);
+			jugador.setEquipo(nuevoEquipo);
+			System.out.println("Jugador "+jugador.getNombre()+" transferido del equipo "+equipoOriginal.getNombre()+
+					" al equipo "+jugador.getEquipo().getNombre()+" de manera exitosa.\n");
+		}
+		
 	}
 
 	@Override
