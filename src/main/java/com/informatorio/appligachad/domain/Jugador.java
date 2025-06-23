@@ -58,7 +58,7 @@ public class Jugador {
 		this.minutosJugados = minutosJugados;
 	}
 
-	public void setPartidosIngresadosDesdeBanco(int partidosIngresados) {
+	public void setPartidosIngresados(int partidosIngresados) {
 		this.partidosIngresados = partidosIngresados;
 	}
 	
