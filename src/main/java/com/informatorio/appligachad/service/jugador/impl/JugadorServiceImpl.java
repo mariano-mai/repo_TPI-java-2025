@@ -164,7 +164,7 @@ public class JugadorServiceImpl implements JugadorService{
 			System.out.println("¿Ingresó a jugar en el último partido?\n1- SI\n2- NO");
 			int ingreso = IngresoPorTeclado.ingresarEnteroPositivo();
 			switch(ingreso) {
-				case 1 -> jugador.setPartidosIngresadosDesdeBanco(jugador.getPartidosIngresados()+1);
+				case 1 -> jugador.setPartidosIngresados(jugador.getPartidosIngresados()+1);
 				default -> System.out.println("Entendido.");
 			}
 		}
