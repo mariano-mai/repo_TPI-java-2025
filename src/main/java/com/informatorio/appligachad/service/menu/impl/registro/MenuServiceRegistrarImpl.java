@@ -1,5 +1,8 @@
 package com.informatorio.appligachad.service.menu.impl.registro;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.informatorio.appligachad.database.domaindb.EquipoDB;
 import com.informatorio.appligachad.database.domaindb.PartidoDB;
 import com.informatorio.appligachad.domain.Equipo;
@@ -10,13 +13,20 @@ import com.informatorio.appligachad.service.equipo.impl.EquipoServiceImpl;
 import com.informatorio.appligachad.service.menu.MenuService;
 import com.informatorio.appligachad.service.partido.PartidoService;
 import com.informatorio.appligachad.service.partido.impl.PartidoServiceImpl;
+import com.informatorio.appligachad.utils.busqueda.equipo.BuscarEquipoInt;
+import com.informatorio.appligachad.utils.busqueda.equipo.impl.BuscarEquipoIntImpl;
 
 public class MenuServiceRegistrarImpl implements MenuService{
 	
 	public static MenuService menuRegistro = new MenuServiceRegistrarImpl();
 	
+	Equipo nuevoEquipo;
+	Partido nuevoPartido;
+	List<Equipo> listaDeEquipos = new ArrayList<>();
+	
 	private EquipoService equipoService = new EquipoServiceImpl();
 	private PartidoService partidoService = new PartidoServiceImpl();
+	private BuscarEquipoInt buscarEquipo = new BuscarEquipoIntImpl();
 
 	@Override
 	public void mostrarMenu() {
@@ -45,8 +55,25 @@ public class MenuServiceRegistrarImpl implements MenuService{
 		case 3:
 			System.out.println("se está ejecutando la opción de registrar partido.\n");
 			partidoService.mostrarPartidos();
-			Partido newPartido = partidoService.crearPartido();
-			PartidoDB.partidoMapDB.put(newPartido.getId(), newPartido);
+			for(int i=0; i<2; i++) {
+				nuevoEquipo = buscarEquipo.buscar();
+				if(nuevoEquipo==null) {
+					break;
+				}else {
+					listaDeEquipos.add(nuevoEquipo);
+				}
+			}
+			if(listaDeEquipos.size()<2) {
+				System.out.println("Equipos en lista: "+listaDeEquipos.size());
+				System.out.println("Falta al menos un equipo.");
+				System.out.println("No se pudo registrar el partido. Vuelva a intentar.");
+				break;
+			}else {
+				nuevoPartido = partidoService.crearPartido(listaDeEquipos);
+				PartidoDB.partidoMapDB.put(nuevoPartido.getId(), nuevoPartido);
+				System.out.println("Partido entre los equipos "+nuevoPartido.getEquipos().get(0).getNombre()+" y "
+						+nuevoPartido.getEquipos().get(1).getNombre()+" agregado con éxito.");
+			}
 			break;
 		default:
 		
