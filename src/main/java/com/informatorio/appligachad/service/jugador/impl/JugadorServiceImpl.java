@@ -171,4 +171,26 @@ public class JugadorServiceImpl implements JugadorService{
 		
 	}
 
+	@Override
+	public void agregarDatos(Jugador jugador1) {
+		System.out.println("Ingrese la cantidad de goles anotados por el jugaor en su último partido: ");
+		int cantidad = IngresoPorTeclado.ingresarEnteroPositivo();
+		jugador1.getGoles().put(jugador1.getEquipo(), cantidad);
+		if(jugador1.isEsTitular()) {
+			System.out.println("Ingrese el tiempo que jugó el jugador, en minutos: ");
+			int minutos = IngresoPorTeclado.ingresarEnteroPositivo();
+			int minutos1 = jugador1.getMinutosJugados();
+			jugador1.setMinutosJugados(minutos1+minutos);
+		}else {
+			System.out.println("¿Ingresó a jugar en el último partido?\n1- SI\n2- NO");
+			int ingreso = IngresoPorTeclado.ingresarEnteroPositivo();
+			int partidos = jugador1.getPartidosIngresados();
+			switch(ingreso) {
+				case 1 -> jugador1.setPartidosIngresados(partidos+ingreso);
+				default -> System.out.println("Entendido.");
+			}
+		}
+		
+	}
+
 }

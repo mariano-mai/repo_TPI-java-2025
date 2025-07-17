@@ -1,5 +1,7 @@
 package com.informatorio.appligachad.domain;
 
+import java.util.Map;
+
 public class Jugador {
 	
 	private String nombre;
@@ -9,6 +11,7 @@ public class Jugador {
 	private int partidosIngresados;
 	private boolean esTitular;
 	private Equipo equipo = new Equipo();
+	private Map<Equipo, Integer> goles;
 	
 	public Jugador() {
 		super();
@@ -65,5 +68,14 @@ public class Jugador {
 	public void setEquipo(Equipo equipo) {
 		this.equipo = equipo;
 	}
+
+	public Map<Equipo, Integer> getGoles() {
+		return goles;
+	}
+
+	public void setGoles(Map<Equipo, Integer> goles) {
+		this.goles = goles;
+	}
+	
 
 }

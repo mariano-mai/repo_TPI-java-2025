@@ -19,5 +19,7 @@ public interface JugadorService {
 	void goleadorLiga();
 	
 	void agregarDatos();
+	
+	void agregarDatos(Jugador jugador1);
 
 }
