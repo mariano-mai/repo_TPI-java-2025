@@ -7,6 +7,8 @@ import com.informatorio.appligachad.service.menu.impl.mostrarinfo.MenuServiceMos
 import com.informatorio.appligachad.service.menu.impl.registro.MenuServiceRegistrarImpl;
 
 public class MenuServiceImpl implements MenuService{
+	
+	public static MenuService menuPrincipal = new MenuServiceImpl();
 
 	@Override
 	public void mostrarMenu() {

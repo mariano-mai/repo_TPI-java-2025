@@ -33,8 +33,11 @@ public class EquipoServiceImpl implements EquipoService{
 
 	@Override
 	public Equipo crearEquipo(String nombre, List<Jugador> jugadores) {
-		// TODO Auto-generated method stub
-		return null;
+		nuevoEquipo = new Equipo(nombre, jugadores);
+		for(Jugador jugador : jugadores) {
+			jugador.setEquipo(nuevoEquipo);
+		}
+		return nuevoEquipo;
 	}
 
 	@Override
