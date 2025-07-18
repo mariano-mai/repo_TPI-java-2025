@@ -54,7 +54,6 @@ public class MenuServiceRegistrarImpl implements MenuService{
 			break;
 		case 3:
 			System.out.println("se está ejecutando la opción de registrar partido.\n");
-			partidoService.mostrarPartidos();
 			for(int i=0; i<2; i++) {
 				nuevoEquipo = buscarEquipo.buscar();
 				if(nuevoEquipo==null) {
