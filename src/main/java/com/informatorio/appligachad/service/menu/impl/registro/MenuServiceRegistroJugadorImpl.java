@@ -31,10 +31,10 @@ public class MenuServiceRegistroJugadorImpl implements MenuService{
 		int condicion;
 		do {
 			System.out.println("Seleccione opción:");
-			System.out.println("1- NUEVO JUGADOR\n2- ASIGNAR JUGADOR A UN EQUIPO\n3- TRANSFERIR JUGADOR\n4- Volver");
+			System.out.println("1- NUEVO JUGADOR\n2- ASIGNAR JUGADOR A UN EQUIPO\n3- CAMBIAR TITULARIDAD\n4- TRANSFERIR JUGADOR\n5- Volver");
 			condicion = IngresoPorTeclado.ingresarEnteroPositivo();
 			ejecutarOpciones(condicion);
-		}while(condicion!=4);
+		}while(condicion!=5);
 		
 	}
 	
@@ -61,6 +61,36 @@ public class MenuServiceRegistroJugadorImpl implements MenuService{
 			}
 			break;
 		case 3:
+			System.out.println("\nAquí se puede cambiar la titularidad de un jugador.\n");
+			nuevoEquipo = buscarEquipo.buscar();
+			if(nuevoEquipo==null) {
+				break;
+			}else {
+				int contador = 0;
+				for(Jugador jugador : nuevoEquipo.getJugadores()) {
+					if(jugador.isEsTitular()) {
+						contador++;
+					}
+				}
+				nuevoJugador = buscarJugador.buscar(nuevoEquipo);
+				if(nuevoJugador==null) {
+					break;
+				}else {
+					boolean esTitular = nuevoJugador.isEsTitular();
+					if(!esTitular && contador==11) {
+						System.out.println("No puede haber más de 11 titulares en el equipo."
+								+ "\nPrimero cambie un jugador titular a suplente.");
+					}else {
+						nuevoJugador.setEsTitular(!esTitular);
+						String estadoAnterior = nuevoJugador.isEsTitular()?"TITULAR":"SUPLENTE";
+						String estadoActual = nuevoJugador.isEsTitular()?"SUPLENTE":"TITULAR";
+						System.out.println("El jugador "+nuevoJugador.getNombre()+" pasó de ser "+
+								estadoAnterior+" a ser "+estadoActual+".");
+					}
+				}
+			}
+			break;
+		case 4:
 			System.out.println("\nAquí se puede transferir un jugador de un equipo a otro.\n");
 			nuevoJugador = buscarJugador.buscar();
 			if(nuevoJugador==null) {
