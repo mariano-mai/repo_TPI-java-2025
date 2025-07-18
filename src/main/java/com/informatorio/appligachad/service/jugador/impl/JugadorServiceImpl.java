@@ -28,7 +28,7 @@ public class JugadorServiceImpl implements JugadorService{
 	}
 
 	@Override
-	public Jugador crearJugador(String nombre, String apellido, int edad, boolean esTitular) {
+	public Jugador crearJugador(String nombre, int edad, boolean esTitular) {
 		Jugador jugador = new Jugador(nombre, edad, esTitular);
 		return jugador;
 	}
