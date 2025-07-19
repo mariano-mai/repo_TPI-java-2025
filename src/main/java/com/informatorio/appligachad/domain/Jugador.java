@@ -76,6 +76,11 @@ public class Jugador {
 	public void setGoles(Map<Equipo, Integer> goles) {
 		this.goles = goles;
 	}
+
+	public void setEsTitular(boolean esTitular) {
+		this.esTitular = esTitular;
+	}
+	
 	
 
 }
