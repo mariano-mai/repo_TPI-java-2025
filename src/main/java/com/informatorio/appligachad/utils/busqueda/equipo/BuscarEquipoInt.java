@@ -11,5 +11,7 @@ public interface BuscarEquipoInt {
 	Equipo buscar(Jugador jugador);
 	
 	Equipo buscar(Partido partido);
+	
+	Equipo buscarTodosMenos(Equipo equipo);
 
 }

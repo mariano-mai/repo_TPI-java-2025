@@ -98,5 +98,33 @@ public class BuscarEquipoIntImpl implements BuscarEquipoInt{
 		}
 		return nuevoEquipo;
 	}
+
+	@Override
+	public Equipo buscarTodosMenos(Equipo equipo) {
+		return buscarEquipo(equipo, EquipoDB.equiposMapDB);
+	}
+	
+	private Equipo buscarEquipo(Equipo equipo, Map<String, Equipo> equipos) {
+		mapaTemporal = new HashMap<>();
+		int i = 1;
+		for(Map.Entry<String, Equipo> equipo1 : equipos.entrySet()) {
+			if(!equipo1.getValue().equals(equipo)) {
+				mapaTemporal.put(i, equipo1.getValue());
+				i++;
+			}
+		}
+		if(i!=1) {
+			System.out.println("Seleccione el otro equipo: ");
+			for(Map.Entry<Integer, Equipo> equipo2 : mapaTemporal.entrySet()) {
+				System.out.println(equipo2.getKey()+"- "+equipo2.getValue().getNombre());
+			}
+			int valor = IngresoPorTeclado.ingresarEnteroPositivo();
+			nuevoEquipo = mapaTemporal.get(valor);
+		}else if(i==1) {
+			System.out.println("No se encontraron otros equipos.");
+			System.out.println("Registre otros equipo para emparejar.\n");
+		}
+		return nuevoEquipo;
+	}
 	
 }

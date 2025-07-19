@@ -21,6 +21,7 @@ public class MenuServiceRegistrarImpl implements MenuService{
 	public static MenuService menuRegistro = new MenuServiceRegistrarImpl();
 	
 	Equipo nuevoEquipo;
+	Equipo equipoContrincante;
 	Partido nuevoPartido;
 	List<Equipo> listaDeEquipos = new ArrayList<>();
 	
@@ -54,14 +55,20 @@ public class MenuServiceRegistrarImpl implements MenuService{
 			break;
 		case 3:
 			System.out.println("se está ejecutando la opción de registrar partido.\n");
-			for(int i=0; i<2; i++) {
-				nuevoEquipo = buscarEquipo.buscar();
-				if(nuevoEquipo==null) {
-					break;
-				}else {
-					listaDeEquipos.add(nuevoEquipo);
-				}
+			
+			nuevoEquipo = buscarEquipo.buscar();
+			if(nuevoEquipo==null) {
+				break;
+			}else {
+				listaDeEquipos.add(nuevoEquipo);
 			}
+			equipoContrincante = buscarEquipo.buscarTodosMenos(nuevoEquipo);
+			if(equipoContrincante==null) {
+				break;
+			}else {
+				listaDeEquipos.add(equipoContrincante);
+			}
+			
 			if(listaDeEquipos.size()<2) {
 				System.out.println("Equipos en lista: "+listaDeEquipos.size());
 				System.out.println("Falta al menos un equipo.");
