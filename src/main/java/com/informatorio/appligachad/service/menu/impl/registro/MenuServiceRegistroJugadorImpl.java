@@ -77,7 +77,7 @@ public class MenuServiceRegistroJugadorImpl implements MenuService{
 					break;
 				}else {
 					boolean esTitular = nuevoJugador.isEsTitular();
-					if(!esTitular && contador==11) {
+					if(esTitular && contador==11) {
 						System.out.println("No puede haber más de 11 titulares en el equipo."
 								+ "\nPrimero cambie un jugador titular a suplente.");
 					}else {
@@ -96,6 +96,9 @@ public class MenuServiceRegistroJugadorImpl implements MenuService{
 			if(nuevoJugador==null) {
 				break;
 			}else {
+				if(nuevoJugador.isEsTitular()) {
+					nuevoJugador.setEsTitular(false);
+				}
 				Equipo nuevoEquipo2 = buscarEquipo.buscar(nuevoJugador);
 				if(nuevoEquipo==null) {
 					break;
